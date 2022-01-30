@@ -15,39 +15,8 @@ function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = React.useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
 
-  const [name, setName] = React.useState('');
-  const [description, setDescription] = React.useState('');
-  const [avatar, setAvatar] = React.useState('');
-
-  const [cards, setCards] = React.useState([]);
   const [selectedCard, setSelectedCard] = React.useState(null);
 
-  React.useEffect(() => {
-    Promise.resolve(api.getCards())
-    .then((data) => {
-      setCards(data.map((item) => ({
-        likes: item.likes,
-        name: item.name,
-        link: item.link,
-        id: item._id
-      })))
-    })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
-  },[]);
-
-   React.useEffect(() => {
-    api.getUserData()
-    .then((user) => {
-      setName(user.name);
-      setDescription(user.about);
-      setAvatar(user.avatar);
-    })
-    .catch((err) => {
-      console.log(err); // выведем ошибку в консоль
-    });
-  }, []);
 
   function handleEditProfileClick() {
     setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
@@ -78,10 +47,6 @@ function App() {
         onEditProfile={handleEditProfileClick}
         onEditAvatar={handleEditAvatarClick}
         onAddPlace={handleAddPlaceClick}
-        userName ={name}
-        userDescription={description}
-        userAvatar={avatar}
-        cards ={cards}
         onCardClick = {handleCardClick}
       />
       <Footer />
