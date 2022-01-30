@@ -3,7 +3,7 @@ import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
 import PopupWithForm from './PopupWithForm';
-import PopupWithImage from './PopupWithImage';
+import ImagePopup from './ImagePopup';
 import api from '../utils/Api';
 import InputsEditProfile from './InputsEditProfile';
 import InputsAddPlace from './InputsAddPlace';
@@ -96,7 +96,7 @@ function App() {
     <PopupWithForm onClose={closeAllPopups} isOpen={isEditAvatarPopupOpen} name="avatar" title="Обновить аватар" submit="Сохранить">
       <InputsEditAvatar />
     </PopupWithForm>
-    <PopupWithImage card={selectedCard} onClose={closeAllPopups}/>
+    <ImagePopup card={selectedCard} onClose={closeAllPopups}/>
   </>
   );
 }
