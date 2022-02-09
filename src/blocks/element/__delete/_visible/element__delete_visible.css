@@ -1,5 +1,5 @@
-.element__delete {
-  background: url(../../../images/button-delete.svg) center no-repeat;
+.element__delete_visible {
+  background: url(../../../../images/button-delete.svg) center no-repeat;
   position: absolute;
   right: 20px;
   top: 20px;

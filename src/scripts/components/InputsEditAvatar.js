@@ -1,4 +1,4 @@
-function InputsEditAvatar() {
+function InputsEditAvatar({avatarRef}) {
   return(
     <>
       <input
@@ -8,6 +8,7 @@ function InputsEditAvatar() {
         name="link"
         required
         id="link-avatar"
+        ref={avatarRef}
       />
       <span id="link-avatar-error" className="popup__error"></span>
     </>

@@ -1,4 +1,4 @@
-function InputsEditProfile() {
+function InputsEditProfile( {onChangeName, onChangeDescription, name, description} ) {
   return(
     <>
       <input
@@ -10,6 +10,8 @@ function InputsEditProfile() {
         minLength="2"
         maxLength="40"
         id="name-card"
+        onChange={onChangeName}
+        value={name || ''}
       />
       <span id="name-card-error" className="popup__error"></span>
       <input
@@ -21,6 +23,8 @@ function InputsEditProfile() {
         minLength="2"
         maxLength="200"
         id="job-card"
+        onChange={onChangeDescription}
+        value={description || ''}
       />
       <span id="job-card-error" className="popup__error"></span>
     </>
