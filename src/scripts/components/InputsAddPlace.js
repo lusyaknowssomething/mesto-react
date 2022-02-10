@@ -1,4 +1,4 @@
-function InputsAddPlace({onChangeName, onChangeLink}) {
+function InputsAddPlace({onChangeName, onChangeLink, name, link}) {
   return(
     <>
       <input
@@ -11,6 +11,7 @@ function InputsAddPlace({onChangeName, onChangeLink}) {
         maxLength="30"
         id="description-card"
         onChange={onChangeName}
+        value={name || ''}
       />
       <span id="description-card-error" className="popup__error"></span>
       <input
@@ -21,6 +22,7 @@ function InputsAddPlace({onChangeName, onChangeLink}) {
         required
         id="link-card"
         onChange={onChangeLink}
+        value={link || ''}
       />
       <span id="link-card-error" className="popup__error"></span>
     </>

@@ -18,29 +18,21 @@ function App() {
   const avatarRef = React.useRef();
 
   React.useEffect(() => {
-    api
-      .getUserData()
-      .then((user) => {
-        setCurrentUser(user);
-      })
-      .catch((err) => {
-        console.log(err); // выведем ошибку в консоль
-      });
-  }, []);
+    Promise.all([
+      api.getUserData(),
+      api.getCards()
+    ])
+    .then(([user, cards]) => {
+      setCurrentUser(user);
 
-  React.useEffect(() => {
-    api
-    .getCards()
-      .then((data) => {
-        setCards(
-          data.map((item) => ({
-            likes: item.likes,
-            name: item.name,
-            link: item.link,
-            _id: item._id,
-            owner: item.owner,
-          }))
-        );
+      setCards(
+        cards.map((item) => ({
+          likes: item.likes,
+          name: item.name,
+          link: item.link,
+          _id: item._id,
+          owner: item.owner,
+        })));
       })
       .catch((err) => {
         console.log(err); // выведем ошибку в консоль
@@ -130,7 +122,6 @@ function App() {
     .then((res)  => {
       setCards([res, ...cards]);
       closeAllPopups()
-      //avatarRef.current.value = '';
     })
     .catch((err) => {
       console.log(err); // выведем ошибку в консоль

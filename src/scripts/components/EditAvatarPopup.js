@@ -4,12 +4,9 @@ import InputsEditAvatar from "./InputsEditAvatar";
 
 function EditAvatarPopup({ isOpen, onClose, onUpdateAvatar, avatarRef }) {
 
-  function handleSubmit(e) {
-    e.preventDefault();
-
-    const avatar = avatarRef.current.value
-    onUpdateAvatar(avatar);
-  }
+  React.useEffect(() => {
+    avatarRef.current.value = '';
+  }, [isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();

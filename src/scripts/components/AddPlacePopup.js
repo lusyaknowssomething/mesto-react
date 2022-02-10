@@ -7,7 +7,10 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
   const [name, setName] = React.useState("");
   const [link, setLink] = React.useState("");
 
-  // Подписка на контекст
+  React.useEffect(() => {
+    setName('');
+    setLink('');
+  }, [onAddPlace]);
 
   // После загрузки текущего пользователя из API
   // его данные будут использованы в управляемых компонентах.
@@ -41,6 +44,8 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
     <InputsAddPlace
       onChangeName={handleChangeName}
       onChangeLink={handleChangeLink}
+      name={name}
+      link={link}
     />
   </PopupWithForm>
   );
